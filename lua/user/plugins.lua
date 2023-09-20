@@ -14,6 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	-- user experience
 	"nvim-lua/plenary.nvim", 
+  "nvim-lua/popup.nvim",
 	"numToStr/Comment.nvim",
 	"akinsho/bufferline.nvim",
 	"moll/vim-bbye",
@@ -35,6 +36,7 @@ require("lazy").setup({
 	-- "hrsh7th/cmp-nvim-lua",
 	"windwp/nvim-autopairs",
 	"neoclide/coc.nvim",
+  "fpob/nette.vim",
 
 	-- snippets
 	"L3MON4D3/LuaSnip",
@@ -43,7 +45,7 @@ require("lazy").setup({
 	
 	--highlighting
 	"nvim-treesitter/nvim-treesitter",
-	"RRethy/vim-illuminate",
+	-- "RRethy/vim-illuminate",
 	
 	-- LSP
 	"neovim/nvim-lspconfig",
@@ -55,6 +57,11 @@ require("lazy").setup({
 	-- Project management
 	"ahmedkhalf/project.nvim",
 	"nvim-telescope/telescope.nvim",
+  "nvim-telescope/telescope-media-files.nvim",
+
+  -- View images
+  "edluffy/hologram.nvim",
+  -- "dharmx/telescope-media.nvim",
 	
 	-- Theme
 	"marko-cerovac/material.nvim"
