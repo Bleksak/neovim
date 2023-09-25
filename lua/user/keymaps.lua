@@ -71,16 +71,3 @@ keymap("x", "<A-k>", ":m '<-2<CR>gv=gv", opts)
 -- NvimTree
 vim.keymap.set('n', '<C-f>', ":NvimTreeToggle<CR>")
 
-if (vim.g.vscode) then
-   vim.keymap.set( -- change o in normal mode to also auto indent using VSCode
-      'n',
-      'o',
-      "o<Cmd>call VSCodeNotifyRange('editor.action.reindentselectedlines', line('.'), line('.'), 1)<CR>"
-   )
-
-   vim.keymap.set( -- change o in normal mode to also auto indent using VSCode
-      'n',
-      'O',
-      "O<Cmd>call VSCodeNotifyRange('editor.action.reindentselectedlines', line('.'), line('.'), 1)<CR>"
-   )
-end
