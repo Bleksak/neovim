@@ -17,7 +17,6 @@ require "user.toggleterm"
 -- require "user.project"
 require "user.indentline"
 require "user.whichkey"
-require "user.autocommands"
 -- require "user.illuminate"
 
 require "user.coc"
@@ -26,3 +25,4 @@ require "user.icons"
 require "user.telescope"
 
 require "user.colorscheme"
+require "user.autocommands"

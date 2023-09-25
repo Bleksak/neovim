@@ -27,6 +27,13 @@ vim.cmd [[
   augroup file_blade_php
     autocmd BufRead,BufNewFile *.blade.php setlocal ts=2 sts=2 sw=2 filetype=blade syntax=blade expandtab
   augroup END
+
+  augroup phpjsfix
+    autocmd!
+    autocmd FileType javascript setlocal iskeyword+=$
+    autocmd FileType php setlocal iskeyword-=$
+    autocmd FileType php setlocal iskeyword-=-
+  augroup END
 ]]
 
 
