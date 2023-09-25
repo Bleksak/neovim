@@ -43,6 +43,9 @@ require("lazy").setup({
 	-- "saadparwaiz1/cmp_luasnip",
 	-- "rafamadriz/friendly-snippets",
 	
+  -- comment jsx
+  "JoosepAlviste/nvim-ts-context-commentstring",
+
 	--highlighting
 	"nvim-treesitter/nvim-treesitter",
 	-- "RRethy/vim-illuminate",
@@ -62,6 +65,7 @@ require("lazy").setup({
   -- View images
   "edluffy/hologram.nvim",
   -- "dharmx/telescope-media.nvim",
+
 	
 	-- Theme
 	"marko-cerovac/material.nvim"
