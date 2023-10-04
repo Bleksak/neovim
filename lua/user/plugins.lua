@@ -29,19 +29,14 @@ require("lazy").setup({
 	-- formatting
 	"lukas-reineke/indent-blankline.nvim",
 	-- autocomplete
-	-- "hrsh7th/nvim-cmp",
-	-- "hrsh7th/cmp-buffer",
-	-- "hrsh7th/cmp-path",
-	-- "hrsh7th/cmp-nvim-lsp",
-	-- "hrsh7th/cmp-nvim-lua",
+	"hrsh7th/nvim-cmp",
+	"hrsh7th/cmp-buffer",
+	"hrsh7th/cmp-path",
+	"hrsh7th/cmp-nvim-lsp",
+	"hrsh7th/cmp-nvim-lua",
+  "gelguy/wilder.nvim",
 	"windwp/nvim-autopairs",
-	"neoclide/coc.nvim",
   "fpob/nette.vim",
-
-	-- snippets
-	"L3MON4D3/LuaSnip",
-	-- "saadparwaiz1/cmp_luasnip",
-	-- "rafamadriz/friendly-snippets",
 	
   -- comment jsx
   "JoosepAlviste/nvim-ts-context-commentstring",
@@ -51,6 +46,14 @@ require("lazy").setup({
 	-- "RRethy/vim-illuminate",
 	
 	-- LSP
+  {
+    "L3MON4D3/LuaSnip",
+    -- follow latest release.
+    -- version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    -- install jsregexp (optional!).
+    build = "make install_jsregexp",
+    dependencies = {"rafamadriz/friendly-snippets"}
+  },
 	"neovim/nvim-lspconfig",
 	"VonHeikemen/lsp-zero.nvim",
 	"williamboman/mason.nvim",
