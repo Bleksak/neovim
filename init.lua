@@ -1,4 +1,3 @@
-
 vim.loader.enable()
 
 require "user.options"

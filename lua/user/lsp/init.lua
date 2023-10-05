@@ -9,18 +9,22 @@ require("mason").setup({
 })
 
 require("mason-lspconfig").setup()
+
+local lspconfig = require('lspconfig')
+local configs = require('lspconfig.configs')
+
+local handlers = require("user.lsp.handlers")
+
 require("mason-lspconfig").setup_handlers {
   function(server_name)
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
     require("lspconfig")[server_name].setup {
-      capabilities = capabilities
+      capabilities = capabilities,
+      on_attach = handlers.on_attach
     }
   end
 }
-
-local lspconfig = require('lspconfig')
-local configs = require('lspconfig.configs')
 
 -- lspconfig.phpactor.setup {
 --   cmd = {"phpactor", "language-server"},
