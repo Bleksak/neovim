@@ -64,6 +64,8 @@ require("lazy").setup({
 	"ahmedkhalf/project.nvim",
 	"nvim-telescope/telescope.nvim",
   "nvim-telescope/telescope-media-files.nvim",
+  -- Scrolling
+  "karb94/neoscroll.nvim",
 
   -- View images
   "edluffy/hologram.nvim",

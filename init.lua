@@ -22,6 +22,7 @@ require "user.whichkey"
 require "user.icons"
 -- require "user.images"
 require "user.telescope"
+require "user.scroll"
 
 require "user.colorscheme"
 require "user.autocommands"
