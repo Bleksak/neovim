@@ -82,8 +82,19 @@ require("lazy").setup({
   -- View images
   "edluffy/hologram.nvim",
   -- "dharmx/telescope-media.nvim",
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      keywords = {
+          
+      }
+    }
+  },
 
-	
+  "ggandor/leap.nvim",
+  "ggandor/flit.nvim",
+    
 	-- Theme
 	"marko-cerovac/material.nvim"
 })

@@ -22,6 +22,7 @@ require "user.icons"
 -- require "user.images"
 require "user.telescope"
 require "user.scroll"
+require "user.leap"
 
 require "user.colorscheme"
 require "user.autocommands"
