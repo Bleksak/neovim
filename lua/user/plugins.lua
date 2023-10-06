@@ -59,6 +59,10 @@ require("lazy").setup({
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
 	"jwalton512/vim-blade",
+  {
+    "Exafunction/codeium.vim",
+    event = 'BufEnter'
+  },
 
 	-- Project management
 	"ahmedkhalf/project.nvim",

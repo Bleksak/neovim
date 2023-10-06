@@ -1,7 +1,0 @@
-{
-  "coc.preferences.bracketEnterImprove": true,
-  "coc.preferences.enableLinkedEditing": false,
-  "coc.source.file.ignoreHidden": false,
-  "colors.enable": true,
-  "intelephense.phpdoc.returnVoid": false,
-}
