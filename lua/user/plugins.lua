@@ -44,7 +44,6 @@ require("lazy").setup({
     },
   },
   "gelguy/wilder.nvim",
-	"windwp/nvim-autopairs",
   "fpob/nette.vim",
 	
   -- comment jsx
