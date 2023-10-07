@@ -41,6 +41,8 @@ require("lazy").setup({
       'hrsh7th/cmp-nvim-lua',
       'hrsh7th/cmp-nvim-lsp-signature-help',
       'saadparwaiz1/cmp_luasnip',
+      'Exafunction/codeium.nvim',
+      'nvim-lua/plenary.nvim',
     },
   },
   "gelguy/wilder.nvim",
@@ -66,10 +68,6 @@ require("lazy").setup({
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
 	"jwalton512/vim-blade",
-  {
-    "Exafunction/codeium.vim",
-    event = 'BufEnter'
-  },
 
 	-- Project management
 	"ahmedkhalf/project.nvim",
