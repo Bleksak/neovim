@@ -24,21 +24,19 @@ vim.cmd [[
     autocmd VimResized * tabdo wincmd = 
   augroup end
 
-  augroup file_blade_php
-    autocmd BufRead,BufNewFile *.blade.php setlocal ts=2 sts=2 sw=2 filetype=blade syntax=blade expandtab
-  augroup END
-
   augroup phpjsfix
     autocmd!
     autocmd FileType javascript setlocal iskeyword+=$
     autocmd FileType php setlocal iskeyword-=$
     autocmd FileType php setlocal iskeyword-=-
   augroup END
+
+  augroup BladeFiltypeRelated
+    au BufNewFile,BufRead *.blade.php set ft=blade
+  augroup END
+
+  augroup LatteFiltypeRelated
+    au BufNewFile,BufRead *.latte set ft=latte
+  augroup END
 ]]
 
-
--- Autoformat
--- augroup _lsp
---   autocmd!
---   autocmd BufWritePre * lua vim.lsp.buf.formatting()
--- augroup end

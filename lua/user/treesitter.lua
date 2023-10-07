@@ -39,3 +39,22 @@ configs.setup {
   },
 }
 
+local parsers = require('nvim-treesitter.parsers').get_parser_configs()
+parsers.blade = {
+ install_info = {
+   url = "https://github.com/EmranMR/tree-sitter-blade",
+   files = {"src/parser.c"},
+   branch = "main"
+ },
+ filetype = "blade"
+}
+
+parsers.latte = {
+  install_info = {
+    url = "https://github.com/whleucka/tree-sitter-latte",
+    files = {"src/parser.c"},
+    branch = "main"
+  },
+  filetype = "latte"
+}
+

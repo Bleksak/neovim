@@ -63,7 +63,6 @@ require("lazy").setup({
     dependencies = {"rafamadriz/friendly-snippets"}
   },
 	"neovim/nvim-lspconfig",
-	"VonHeikemen/lsp-zero.nvim",
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
 	"jwalton512/vim-blade",
@@ -91,6 +90,8 @@ require("lazy").setup({
       }
     }
   },
+
+  "weilbith/nvim-code-action-menu",
 
   "ggandor/leap.nvim",
   "ggandor/flit.nvim",
