@@ -91,8 +91,20 @@ require("lazy").setup({
 
   "weilbith/nvim-code-action-menu",
 
+  -- load/save
+  "mrquantumcodes/retrospect.nvim",
+
   "ggandor/leap.nvim",
   "ggandor/flit.nvim",
+
+  -- LazyGit
+  {
+        "kdheepak/lazygit.nvim",
+        -- optional for floating window border decoration
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+    },
     
 	-- Theme
 	"marko-cerovac/material.nvim"
