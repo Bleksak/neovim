@@ -41,6 +41,8 @@ require("lazy").setup({
       'hrsh7th/cmp-nvim-lua',
       'hrsh7th/cmp-nvim-lsp-signature-help',
       'saadparwaiz1/cmp_luasnip',
+      'Exafunction/codeium.nvim',
+      'nvim-lua/plenary.nvim',
     },
   },
   "gelguy/wilder.nvim",
@@ -66,10 +68,6 @@ require("lazy").setup({
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
 	"jwalton512/vim-blade",
-  {
-    "Exafunction/codeium.vim",
-    event = 'BufEnter'
-  },
 
 	-- Project management
 	"ahmedkhalf/project.nvim",
@@ -93,8 +91,31 @@ require("lazy").setup({
 
   "weilbith/nvim-code-action-menu",
 
+  -- load/save
+  "mrquantumcodes/retrospect.nvim",
+
   "ggandor/leap.nvim",
   "ggandor/flit.nvim",
+
+  -- LazyGit
+  {
+      "kdheepak/lazygit.nvim",
+      -- optional for floating window border decoration
+      dependencies = {
+          "nvim-lua/plenary.nvim",
+      },
+  },
+  -- Surround
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup({
+          -- Configuration here, or leave empty to use defaults
+      })
+    end
+  },
     
 	-- Theme
 	"marko-cerovac/material.nvim"

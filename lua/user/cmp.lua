@@ -2,6 +2,7 @@
 local cmp = require'cmp'
 require("luasnip.loaders.from_vscode").lazy_load()
 require("wilder").setup({modes = {':', '/', '?'}})
+require('codeium').setup()
 
 cmp.setup({
   snippet = {
@@ -40,11 +41,12 @@ cmp.setup({
       format = function(entry, item)
           -- Define menu shorthand for different completion sources.
           local menu_icon = {
-              nvim_lsp = "NLSP",
-              nvim_lua = "NLUA",
-              luasnip  = "LSNP",
-              buffer   = "BUFF",
-              path     = "PATH",
+              nvim_lsp    = "NLSP",
+              nvim_lua    = "NLUA",
+              -- luasnip     = "LSNP",
+              buffer      = "BUFF",
+              path        = "PATH",
+              codeium     = "AI",
           }
           -- Set the menu "icon" to the shorthand for each completion source.
           item.menu = menu_icon[entry.source.name]
@@ -93,8 +95,9 @@ cmp.setup({
         return require("cmp").lsp.CompletionItemKind.Text ~= entry:get_kind()
       end
     },
-    { name = "luasnip" },
-    { name = "nvim_lua" }
+    { name = "nvim_lua" },
+    { name = "codeium" },
+    -- { name = "luasnip" },
   }, {
     { name = 'buffer' },
   }, {
