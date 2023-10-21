@@ -118,5 +118,5 @@ require("lazy").setup({
   },
     
 	-- Theme
-	"marko-cerovac/material.nvim"
+	"marko-cerovac/material.nvim",
 })
