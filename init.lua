@@ -25,5 +25,7 @@ require "user.scroll"
 require "user.leap"
 require "user.retrospect"
 
+require "user.gitdiff"
+
 require "user.colorscheme"
 require "user.autocommands"
