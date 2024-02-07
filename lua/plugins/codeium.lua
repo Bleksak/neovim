@@ -1,6 +1,5 @@
 return {
     "Exafunction/codeium.vim",
-    commit = "a1c3d6b369a18514d656dac149de807becacbdf7",
     event = "BufEnter",
     config = function()
         vim.keymap.set("i", "<C-g>", function()
