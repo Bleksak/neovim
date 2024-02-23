@@ -20,7 +20,7 @@ return {
 
                     configs.blade = {
                         default_config = {
-                            cmd = { "laravel-dev-tools", "lsp" },
+                            cmd = { "/home/bleksak/laravel-dev-tools/builds/laravel-dev-tools", "lsp" },
                             filetypes = { "blade", "php" },
                             root_dir = function(fname)
                                 return lspconfig.util.find_git_ancestor(fname)
