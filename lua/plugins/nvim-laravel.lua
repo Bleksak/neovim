@@ -111,13 +111,13 @@ return {
         opts = function(_, opts)
             opts = vim.tbl_deep_extend("force", opts, {
                 servers = {
+                    emmet_language_server = {
+                        filetypes = { "blade" },
+                    },
                     html = {
                         filetypes = { "blade" },
                     },
-                    -- emmet_language_server = {
-                    --     filetypes = { "blade" },
-                    -- },
-                },
+                }
             })
 
             return opts

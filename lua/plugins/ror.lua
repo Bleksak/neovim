@@ -38,11 +38,10 @@ return {
         }
     },
     {
-        -- lspconfig
         "neovim/nvim-lspconfig",
         opts = {
             servers = {
-                ruby_lsp = {}
+                ruby_ls = {}
             },
         }
     }

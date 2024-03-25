@@ -63,13 +63,13 @@ return {
         },
 
         keys = {
-            { "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
-            { "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", desc = "Go to definition" },
-            { "gr", "<cmd>lua vim.lsp.buf.references()<cr>", desc = "Find references" },
-            { "K", "<cmd>lua vim.lsp.buf.hover()<cr>", desc = "Hover" },
-            { "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>", desc = "Previous diagnostic" },
-            { "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>", desc = "Next diagnostic" },
-            { "<leader>cd", "<cmd>lua vim.diagnostic.setloclist()<cr>", desc = "Diagnostics list" },
+            { "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<cr>",                 desc = "Rename" },
+            { "gd",         "<cmd>lua vim.lsp.buf.definition()<cr>",             desc = "Go to definition" },
+            { "gr",         "<cmd>lua vim.lsp.buf.references()<cr>",             desc = "Find references" },
+            { "K",          "<cmd>lua vim.lsp.buf.hover()<cr>",                  desc = "Hover" },
+            { "[d",         "<cmd>lua vim.diagnostic.goto_prev()<cr>",           desc = "Previous diagnostic" },
+            { "]d",         "<cmd>lua vim.diagnostic.goto_next()<cr>",           desc = "Next diagnostic" },
+            { "<leader>cd", "<cmd>lua vim.diagnostic.setloclist()<cr>",          desc = "Diagnostics list" },
             -- { "<leader>cD", "<cmd>lua vim.diagnostic.open_float()<cr>", desc = "Diagnostics list" },
             { "<leader>cf", "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", desc = "Format buffer" },
             -- { "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code actions" },
@@ -98,13 +98,8 @@ return {
                     end
                 end
 
-                -- if server == "tsserver" then
-                --     -- print(vim.inspect(capabilities.on_attach))
-                --     -- capabilities.on_attach = function(client, bufnr)
-                --     --     client.resolved_capabilities.document_formatting = false
-                --     -- end
-                --     capabilities.on_attach = nil
-                -- end
+                local default_filetypes = require("lspconfig")[server].document_config.default_config.filetypes
+                server_opts.filetypes = vim.list_extend(default_filetypes, server_opts.filetypes or {})
 
                 require("lspconfig")[server].setup(server_opts)
             end
