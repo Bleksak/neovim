@@ -1,8 +1,8 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        event = {"VeryLazy"},
-        cmd = {"TSInstall", "TSInstallInfo", "TSInstallSync", "TSBufEnable", "TSBufDisable", "TSEnable", "TSDisable", "TSModuleInfo"},
+        event = { "VeryLazy" },
+        cmd = { "TSInstall", "TSInstallInfo", "TSInstallSync", "TSBufEnable", "TSBufDisable", "TSEnable", "TSDisable", "TSModuleInfo" },
         opts = {
             ensure_installed = {
                 "bash",
@@ -49,20 +49,33 @@ return {
             require("nvim-treesitter.configs").setup(opts)
 
             local parsers = require("nvim-treesitter.parsers").get_parser_configs()
+
+            ---@diagnostic disable-next-line: inject-field
             parsers.neon = {
                 install_info = {
                     url = "~/dev/ts-neon",
                     generate_requires_npm = false,
                     requires_generate_from_grammar = false,
-                    files = {"src/parser.c", "src/scanner.c"},
+                    files = { "src/parser.c", "src/scanner.c" },
                 },
                 filetype = "neon",
             }
+
+            ---@diagnostic disable-next-line: inject-field
+            parsers.blade = {
+                install_info = {
+                url = "https://github.com/EmranMR/tree-sitter-blade",
+                files = {"src/parser.c"},
+                branch = "main",
+              },
+              filetype = "blade"
+            }
+
         end
     },
     {
         "windwp/nvim-ts-autotag",
-        event = {"BufReadPre", "BufNewFile"},
+        event = { "BufReadPre", "BufNewFile" },
         opts = {},
     },
 }

@@ -1,7 +1,7 @@
-vim.o.tabstop = 4 -- A TAB character looks like 4 spaces
+vim.o.tabstop = 4      -- A TAB character looks like 4 spaces
 vim.o.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
-vim.o.softtabstop = 4 -- Number of spaces inserted instead of a TAB character
-vim.o.shiftwidth = 4 -- Number of spaces inserted when indenting
+vim.o.softtabstop = 4  -- Number of spaces inserted instead of a TAB character
+vim.o.shiftwidth = 4   -- Number of spaces inserted when indenting
 vim.g.autoformat = false
 vim.o.autoindent = true
 vim.o.ignorecase = true
@@ -17,9 +17,30 @@ vim.opt.foldenable = false
 vim.o.relativenumber = true
 vim.o.numberwidth = 2
 vim.o.signcolumn = "yes"
-vim.o.statuscolumn = "%=%{v:relnum?v:relnum:v:lnum}  "
+-- vim.o.statuscolumn = "%@SignCb@%s%=%T%@NumCb@%r│%T"
+vim.o.statuscolumn = "%s %l %C"
 vim.o.laststatus = 3
 vim.o.termguicolors = true
+
+vim.o.conceallevel = 2
+vim.o.timeout = false
+vim.o.timeoutlen = 0
+
+
+if not vim.env.SSH_TTY then
+    vim.g.clipboard = {
+        copy = {
+            ["+"] = "xclip -selection clipboard",
+            ["*"] = "xclip -selection clipboard",
+        },
+        paste = {
+            ["+"] = "xclip -selection clipboard -o",
+            ["*"] = "xclip -selection clipboard -o",
+        },
+    }
+
+    vim.o.clipboard = "unnamedplus"
+end
 
 local function snippetfilter(line_to_cursor, base)
     return function(s)
@@ -35,7 +56,10 @@ local function snippet_to_cmp(item)
         empty = false,
         menu = item.name,
         user_data = "luasnip",
-        info = vim.trim(table.concat(vim.tbl_flatten({ item.dscr or "", "", item:get_docstring() }), "\n")),
+        info = vim.trim(table.concat(
+        -- vim.tbl_flatten({ item.dscr or "", "", item:get_docstring() }), "\n"
+            vim.iter({ item.dscr or "", "", item:get_docstring() }):flatten():totable()
+        )),
     }
 end
 
@@ -65,14 +89,44 @@ function LuasnipCompletion(findstart, base)
 end
 
 vim.api.nvim_create_autocmd("CompleteDone", {
-    callback = function()
+    callback = function(opts)
         local luasnip = require("luasnip")
 
         if vim.v.completed_item.user_data == "luasnip" and luasnip.expandable() then
             luasnip.expand()
         end
+
+        -- vim.snippet.expand(vim.v.completed_item.word)
+        local comp = vim.v.completed_item
+        local item = vim.tbl_get(comp, 'user_data', 'nvim', 'lsp', 'completion_item')
+        local word = vim.tbl_get(comp, 'word')
+        if (
+                not item
+                or not item.insertTextFormat
+                or item.insertTextFormat == 1
+            ) then
+            return
+        end
+
+        local cursor = vim.api.nvim_win_get_cursor(0)
+        local line = vim.api.nvim_get_current_line()
+        local lnum = cursor[1] - 1
+        local start_char = cursor[2] - #comp.word
+        vim.api.nvim_buf_set_text(opts.buf, lnum, start_char, lnum, start_char + #word, { '' })
+
+        -- {
+        --   insertTextFormat = 2,
+        --   kind = 1,
+        --   label = "BufEnter",
+        --   sortText = "0009"
+        -- }
+
+        local snip_text = vim.tbl_get(item, 'textEdit', 'newText') or item.insertText or item.label
+        assert(snip_text, "Language server indicated it had a snippet, but no snippet text could be found!")
+        vim.snippet.expand(snip_text)
     end,
 })
+
 
 vim.o.completefunc = "v:lua.LuasnipCompletion"
 
@@ -82,5 +136,4 @@ vim.o.completefunc = "v:lua.LuasnipCompletion"
 -- vim.api.nvim_command('set completefunc=v:lua.MiniCompletion.completefunc')
 -- vim.api.nvim_command('set omnifunc=v:lua.MiniCompletion.completefunc')
 
--- vim.opt.termguicolors = true
 -- vim.cmd.colorscheme 'wildcharm'

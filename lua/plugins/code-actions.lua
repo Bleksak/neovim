@@ -1,6 +1,7 @@
 return {
     "aznhe21/actions-preview.nvim",
     event = "LspAttach",
+    enabled = false,
 
     dependencies = {
         "nvim-telescope/telescope.nvim",

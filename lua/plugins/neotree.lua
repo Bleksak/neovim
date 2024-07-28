@@ -12,10 +12,16 @@ return {
             "antosha417/nvim-lsp-file-operations",
         },
         opts = {
+            window = {
+                mappings = {
+                    
+                }
+            }
         },
 
         keys = {
-            { "<leader>e", "<cmd>Neotree float<cr>", desc = "Toggle Explorer" },
+            { "<leader>e", "<cmd>Neotree toggle float<cr>", desc = "Toggle Explorer" },
+            { "<leader>E", "<cmd>Neotree toggle float reveal<cr>", desc = "Toggle Explorer with file reveal" },
         }
     }
 }

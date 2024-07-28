@@ -9,10 +9,6 @@ return {
         snippet_engine = "luasnip"
     },
 
-    -- config = function()
-    --     require('neogen').setup({ snippet_engine = "luasnip" })
-    -- end,
-
     keys = {
         {
             "<Leader>ng",

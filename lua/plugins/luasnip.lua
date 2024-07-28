@@ -25,7 +25,7 @@ return {
                 print(vim.inspect(ft_snips))
             end
 
-            vim.o.completefunc = "v:lua.LuasnipCompletion"
+            -- vim.o.completefunc = "v:lua.LuasnipCompletion"
             vim.api.nvim_create_user_command("SnipList", list_snippets, {})
         end,
 
@@ -36,18 +36,24 @@ return {
                     if require("luasnip").expand_or_jumpable() then
                         require("luasnip").expand_or_jump()
                     end
+                    if vim.snippet.active({direction = 1}) then
+                        vim.snippet.jump(1)
+                    end
                 end,
-                mode = {"i", "s"},
+                mode = { "i", "s" },
                 desc = "Expand or jump",
             },
             {
                 "<C-h>",
                 function()
-                    if require("luasnip").jumpable(-1) then
+                    if require("luasnip").locally_jumpable(-1) then
                         require("luasnip").jump(-1)
                     end
+                    if vim.snippet.active({direction = -1}) then
+                        vim.snippet.jump(-1)
+                    end
                 end,
-                mode = {"i", "s"},
+                mode = { "i", "s" },
                 desc = "Jump backward",
             }
         },

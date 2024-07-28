@@ -46,26 +46,28 @@ return {
             require("laravel").setup(opts)
         end,
     },
-    {
-        "adoolaard/nvim-cmp-laravel",
-        enabled = false,
+    -- {
+        -- "adoolaard/nvim-cmp-laravel",
+        -- enabled = false,
         -- enabled = function()
         --     return vim.fn.filereadable("artisan") ~= 0
         -- end,
-        dependencies = {
-            "hrsh7th/nvim-cmp",
-        },
-
-        opts = {},
-    },
+        -- dependencies = {
+        --     "hrsh7th/nvim-cmp",
+        -- },
+        --
+        -- opts = {},
+    -- },
     {
         "jwalton512/vim-blade",
 
         event = { "BufReadPre", "BufNewFile" },
 
-        enabled = function()
-            return vim.fn.filereadable("artisan") ~= 0
-        end,
+        enabled = false,
+
+        -- enabled = function()
+        --     return vim.fn.filereadable("artisan") ~= 0
+        -- end,
     },
     {
         "neovim/nvim-lspconfig",
@@ -80,16 +82,17 @@ return {
         opts = {
             servers = {
                 blade = {},
+                -- blade_formatter = {}
             },
             setup = {
                 blade = function(_, opts)
                     local lspconfig = require("lspconfig")
                     local configs = require("lspconfig.configs")
-                    -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+                    local capabilities = vim.lsp.protocol.make_client_capabilities()
 
                     configs.blade = {
                         default_config = {
-                            cmd = { "/home/bleksak/laravel-dev-tools/builds/laravel-dev-tools", "lsp" },
+                            cmd = { "/home/bleksak/laravel-dev-tools/laravel-dev-tools", "lsp" },
                             filetypes = { "blade" },
                             root_dir = function(fname)
                                 return lspconfig.util.find_git_ancestor(fname)
@@ -99,10 +102,32 @@ return {
                     }
 
                     lspconfig.blade.setup({
-                        -- capabilities = capabilities,
+                        capabilities = capabilities,
                         -- on_attach = handlers.on_attach,
                     })
                 end,
+
+                -- blade_formatter = function(_, opts)
+                --     local lspconfig = require("lspconfig")
+                --     local configs = require("lspconfig.configs")
+                --     local capabilities = vim.lsp.protocol.make_client_capabilities()
+                --
+                --     configs.blade_formatter = {
+                --         default_config = {
+                --             cmd = { "blade-formatter", vim.fn.expand("%") },
+                --             filetypes = { "blade" },
+                --             root_dir = function(fname)
+                --                 return lspconfig.util.find_git_ancestor(fname)
+                --             end,
+                --             settings = {},
+                --         },
+                --     }
+                --
+                --     lspconfig.blade_formatter.setup({
+                --         capabilities = capabilities,
+                --         -- on_attach = handlers.on_attach,
+                --     })
+                -- end,
             },
         },
     },
@@ -112,10 +137,10 @@ return {
             opts = vim.tbl_deep_extend("force", opts, {
                 servers = {
                     emmet_language_server = {
-                        filetypes = { "blade" },
+                        filetypes = { "blade", "latte.php.html" },
                     },
                     html = {
-                        filetypes = { "blade" },
+                        filetypes = { "blade", "latte.php.html" },
                     },
                 }
             })

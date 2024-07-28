@@ -1,5 +1,6 @@
 return {
     {
+        enabled = false,
         "williamboman/mason.nvim",
         event = {"VeryLazy"},
         cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
@@ -42,6 +43,7 @@ return {
         end,
     },
     {
+        enabled = false,
         "williamboman/mason-lspconfig.nvim",
         dependencies = {
             "williamboman/mason.nvim",

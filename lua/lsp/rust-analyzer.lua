@@ -1,0 +1,10 @@
+-- local lspconfig = require("lspconfig")
+--
+-- lspconfig.rust_analyzer.setup {
+--     cmd = { "rust-analyzer" },
+--     init_options = {
+--         checkOnSave = {
+--             command = "clippy"
+--         }
+--     }
+-- }

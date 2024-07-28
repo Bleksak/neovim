@@ -2,7 +2,6 @@ return {
     {
         "echasnovski/mini.completion",
         version = "*",
-
         enabled = true,
 
         event = "VeryLazy",
@@ -31,7 +30,7 @@ return {
 
             lsp_completion = {
                 source_func = "omnifunc", -- or completefunc
-                auto_setup = true,
+                auto_setup = false,
             },
 
             mappings = {
@@ -43,8 +42,8 @@ return {
         },
 
         keys = {
-            { "<Tab>",   "pumvisible() ? '<C-n>' : '<Tab>'",   expr = true, mode = "i" },
-            { "<S-Tab>", "pumvisible() ? '<C-p>' : '<S-Tab>'", expr = true, mode = "i" },
+            { "<C-j>",   "pumvisible() ? '<C-n>' : '<C-j>'",   expr = true, mode = "i" },
+            { "<C-k>", "pumvisible() ? '<C-p>' : '<C-k>'", expr = true, mode = "i" },
         },
     },
 }

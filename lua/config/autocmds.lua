@@ -20,16 +20,23 @@
 
 -- TODO: I can't figure out the event to use, BufReadPost or FileReadPost doesn't seem to work..
 vim.api.nvim_create_autocmd(
-    {"BufReadPost", "LspAttach"}, {
-        pattern = {"*"},
+    { "BufReadPost", "LspAttach" }, {
+        pattern = { "*" },
         command = "normal! zR<CR>"
     }
 )
 
-vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"},
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" },
     {
-        pattern = {"*.neon"},
+        pattern = { "*.neon" },
         command = "setfiletype neon",
+    }
+)
+
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" },
+    {
+        pattern = { "*.blade.php" },
+        command = "setfiletype blade",
     }
 )
 
@@ -62,3 +69,15 @@ vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"},
 --         end
 --     }
 -- )
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "mysql", "sql", "plsql" },
+    callback = function(ev)
+        vim.cmd[[setlocal omnifunc=vim_dadbod_completion#omni]]
+        vim.keymap.set("i", "<C-Space>", "<C-x><C-o>", { buffer = ev.buf })
+    end
+})
+
+vim.api.nvim_create_autocmd("LspAttach", {
+    command = [[setlocal omnifunc=v:lua.MiniCompletion.completefunc_lsp]]
+})

@@ -6,12 +6,14 @@ _G.CloseAllFloatingWindows = function()
     for _, win in ipairs(vim.api.nvim_list_wins()) do
         local config = vim.api.nvim_win_get_config(win)
         if config.relative ~= "" then -- is_floating_window?
-            vim.api.nvim_win_close(win, false) -- do not force
+            vim.api.nvim_win_close(win, true) -- do not force
             table.insert(closed_windows, win)
         end
     end
     -- print(string.format("Closed %d windows: %s", #closed_windows, vim.inspect(closed_windows)))
 end
+
+vim.api.nvim_create_user_command("CloseAllFloatingWindows", CloseAllFloatingWindows, {})
 
 vim.keymap.set("n", "<leader>wc", CloseAllFloatingWindows, { desc = "Close all floating windows" })
 vim.keymap.set("n", "<Esc>", CloseAllFloatingWindows, { desc = "Close all floating windows" })
@@ -38,3 +40,8 @@ end
 vim.keymap.set('i', '<CR>', 'v:lua._G.cr_action()', { expr = true })
 vim.keymap.set('n', '<Esc>', '<Cmd>nohlsearch<CR>', { desc = "Clear search highlight" })
 vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
+
+-- remove annoying default keymaps
+vim.keymap.del({ 'n', 'x' }, 'gra')
+vim.keymap.del('n', 'grr')
+vim.keymap.del('n', 'grn')
