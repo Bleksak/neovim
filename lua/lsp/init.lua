@@ -1,5 +1,3 @@
-local lspconfig = require("lspconfig")
-
 -- lspconfig.setup({
 --     diagnostics = {
 --         underline = true,

@@ -2,11 +2,10 @@ return {
     "danymat/neogen",
     dependencies = {
         "nvim-treesitter/nvim-treesitter",
-        "L3MON4D3/LuaSnip",
     },
 
     opts = {
-        snippet_engine = "luasnip"
+        snippet_engine = "nvim"
     },
 
     keys = {

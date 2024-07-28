@@ -22,7 +22,6 @@ return {
                 "svelte",
                 "css",
                 "scss",
-                "zig",
                 "c",
                 "cpp",
             },

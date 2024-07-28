@@ -127,7 +127,6 @@ vim.api.nvim_create_autocmd("CompleteDone", {
     end,
 })
 
-
 vim.o.completefunc = "v:lua.LuasnipCompletion"
 
 -- vim.o.omnifunc = "v:lua.MiniCompletion.completefunc"
