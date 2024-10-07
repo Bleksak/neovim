@@ -76,27 +76,9 @@ end
 vim.cmd('command! RemoveQFItem lua Remove_qf_item()')
 vim.api.nvim_command('autocmd FileType qf nnoremap <buffer> dd :RemoveQFItem<cr>')
 
--- require("lspconfig").clangd.setup({})
-
--- local client = vim.lsp.start_client({
---     name = "phplsp",
---     cmd = { "/home/bleksak/dev/phplsp/target/debug/phplsp" },
---     root_dir = vim.fs.dirname(vim.fs.find({ "composer.json", }, { upward = true })[1]),
---     settings = {},
---     on_attach = {},
+-- cmp2lsp.setup({
+--     sources = {
+--         { 'laravel' },
+--         { 'lsp' }
+--     }
 -- })
---
--- if not client then
---     vim.notify("bad client setup")
--- else
---     vim.api.nvim_create_autocmd("FileType", {
---         pattern = { "php" },
---         callback = function(ev)
---             vim.lsp.buf_attach_client(0, client)
---         end
---     })
--- end
-
--- TODO: make this work
--- cmp2lsp.setup({})
--- 
