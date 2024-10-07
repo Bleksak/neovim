@@ -46,12 +46,12 @@ if not vim.env.SSH_TTY then
     -- else
         vim.g.clipboard = {
             copy = {
-                ["+"] = "wl-copy --primary -n",
-                ["*"] = "wl-copy --primary -n",
+                ["+"] = "wl-copy -n",
+                ["*"] = "wl-copy -n",
             },
             paste = {
-                ["+"] = "wl-paste --primary",
-                ["*"] = "wl-paste --primary",
+                ["+"] = "wl-paste",
+                ["*"] = "wl-paste",
             },
         }
     -- end
